@@ -103,6 +103,12 @@ socket.on('sessionEnded', (message) => {
   // Optionally reset UI here.
 });
 
+socket.on('becomeGameMaster', () => {
+  gmControls.style.display = 'block';
+  guessControls.style.display = 'none';
+  appendMessage('You have been assigned as the new Game Master.');
+});
+
 function appendMessage(message) {
   const p = document.createElement('p');
   p.textContent = message;
