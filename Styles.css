@@ -3,6 +3,29 @@ body {
   margin: 20px;
 }
 
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+     /* margin-bottom: 20px; */
+     /* background: #c4bef8; */
+     justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
 #chat {
   border: 1px solid #ccc;
   height: 300px;
