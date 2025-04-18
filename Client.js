@@ -113,4 +113,6 @@ function appendMessage(message) {
   const p = document.createElement('p');
   p.textContent = message;
   messagesDiv.appendChild(p);
+  // Auto-scroll to the bottom
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
