@@ -16,7 +16,7 @@ h2 {
 }
 
 #login {
-  display: flex;
+    display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -25,10 +25,13 @@ h2 {
   backdrop-filter: blur(5px);
   padding: 20px;
   border-radius: 8px;
-  margin-top: 40px;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 400px;
 }
 
 #login input[type="text"] {
+  width: 100%;
   padding: 8px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -41,7 +44,7 @@ h2 {
 
 #chat {
   border: 1px solid #ccc;
-  height: 300px;
+  height: 100px;
   overflow-y: scroll;
   padding: 10px;
   background: rgba(255, 255, 255, 0.2);
@@ -88,6 +91,7 @@ button:hover {
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.15);
   padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
 }

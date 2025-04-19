@@ -18,6 +18,11 @@ const guessInput = document.getElementById('guessInput');
 const submitGuessBtn = document.getElementById('submitGuessBtn');
 const scoresList = document.getElementById('scores');
 
+function scrollToBottom() {
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+
 joinBtn.addEventListener('click', () => {
   const username = usernameInput.value.trim();
   if (!username) {
@@ -71,15 +76,18 @@ socket.on('updatePlayers', (players) => {
     const li = document.createElement('li');
     li.textContent = `${player.username}: ${player.score} points`;
     scoresList.appendChild(li);
+    scrollToBottom();
   });
 });
 
 socket.on('sessionError', (error) => {
   alert(error);
+  scrollToBottom();
 });
 
 socket.on('questionSet', (data) => {
   appendMessage(`Question: ${data.question}`);
+  scrollToBottom();
 });
 
 socket.on('gameStarted', (data) => {
@@ -87,15 +95,18 @@ socket.on('gameStarted', (data) => {
   // Only show guessing controls for players once the game starts.
   gmControls.style.display = 'none';
   guessControls.style.display = 'block';
+  scrollToBottom();
 });
 
 socket.on('guessResult', (data) => {
   appendMessage(data.message);
+  scrollToBottom();
 });
 
 socket.on('gameOver', (data) => {
   appendMessage(`Game Over! ${data.message}. The answer was: ${data.answer}`);
   guessControls.style.display = 'none';
+  scrollToBottom();
 });
 
 socket.on('sessionEnded', (message) => {
@@ -107,12 +118,14 @@ socket.on('becomeGameMaster', () => {
   gmControls.style.display = 'block';
   guessControls.style.display = 'none';
   appendMessage('You have been assigned as the new Game Master.');
+  scrollToBottom();
 });
 
+
+
 function appendMessage(message) {
-  const p = document.createElement('p');
-  p.textContent = message;
-  messagesDiv.appendChild(p);
-  // Auto-scroll to the bottom
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    const p = document.createElement('p');
+    p.textContent = message;
+    messagesDiv.appendChild(p);
+    scrollToBottom(); // Call the scrollToBottom function here
 }
